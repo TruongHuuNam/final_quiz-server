@@ -63,8 +63,8 @@ public class SecurityConfig {
         httpSecurity
                 .cors(cors -> cors.configurationSource(request -> {
                     var corsConfig = new org.springframework.web.cors.CorsConfiguration();
-                    corsConfig.setAllowedOrigins(List.of("https://final-quiz-server.onrender.com")); // Allow all
-                                                                                                     // origins
+                    corsConfig.setAllowedOriginPatterns(List.of("*")); // thay vì setAllowedOrigins
+
                     corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     corsConfig.setAllowedHeaders(List.of("*"));
                     return corsConfig;
