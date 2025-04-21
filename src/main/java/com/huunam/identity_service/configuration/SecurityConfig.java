@@ -69,8 +69,9 @@ public class SecurityConfig {
                     return corsConfig;
                 }))
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**",
-                                "/swagger-resources/**", "/webjars/**")
+                        .requestMatchers("identity/swagger-ui.html", "identity/swagger-ui/**",
+                                "identity/v3/api-docs/**",
+                                "identity/swagger-resources/**", "identity/webjars/**")
                         .permitAll() // cho phep tat ca user truy cap vao endpoints swagger
                         .requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINTS).permitAll()
                         // .requestMatchers(HttpMethod.GET,"/users").hasRole(Role.ADMIN.name()) //phan

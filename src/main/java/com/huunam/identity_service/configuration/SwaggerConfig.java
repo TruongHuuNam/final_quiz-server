@@ -40,7 +40,7 @@ public class SwaggerConfig {
                                                                 .description("Local Development Server"),
                                                 new Server().url("https://quiz-server-production-eddc.up.railway.app")
                                                                 .description("Production Server"),
-                                                new Server().url("https://quiz-server-cz64.onrender.com")
+                                                new Server().url("https://final-quiz-server.onrender.com/")
                                                                 .description("Production Server")));
         }
 }
