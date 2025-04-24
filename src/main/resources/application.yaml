@@ -6,9 +6,9 @@ server:
 
 spring:
   datasource:
-    url: "jdbc:mysql://hopper.proxy.rlwy.net:58537/railway"
+    url: "jdbc:mysql://trolley.proxy.rlwy.net:55886/railway"
     username: root
-    password: XDQGDrtGrUSaPQBSblRwhzUgJdmSnFvD
+    password: JYwlhocDIhRJLTCsVNGvtJJjQMnbJwkK
   jpa:
     hibernate:
       ddl-auto: update
