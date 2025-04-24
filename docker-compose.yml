@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456  # Password root
+      MYSQL_DATABASE: identity_service  # Tên database khớp với properties
+    ports:
+      - "3307:3306"  # Giữ nguyên port 3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+    # Bỏ healthcheck để đơn giản
+
+  backend-app:
+    build: .
+    container_name: backend-app
+    ports:
+      - "8080:8080"  # Khớp port trong properties
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/identity_service?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+    depends_on:
+      - mysql-db  # Giữ nguyên depends_on nhưng không có healthcheck
+    restart: unless-stopped
+
+volumes:
+  mysql-data:

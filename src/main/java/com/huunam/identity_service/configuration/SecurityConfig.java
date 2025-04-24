@@ -63,13 +63,15 @@ public class SecurityConfig {
         httpSecurity
                 .cors(cors -> cors.configurationSource(request -> {
                     var corsConfig = new org.springframework.web.cors.CorsConfiguration();
-                    corsConfig.setAllowedOrigins(List.of("*")); // Allow all origins
+                    corsConfig.setAllowedOriginPatterns(List.of("*")); // thay vì setAllowedOrigins
+
                     corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     corsConfig.setAllowedHeaders(List.of("*"));
                     return corsConfig;
                 }))
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**",
+                        .requestMatchers("/swagger-ui.html", "/swagger-ui/**",
+                                "/v3/api-docs/**",
                                 "/swagger-resources/**", "/webjars/**")
                         .permitAll() // cho phep tat ca user truy cap vao endpoints swagger
                         .requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINTS).permitAll()

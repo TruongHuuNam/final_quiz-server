@@ -36,11 +36,12 @@ public class SwaggerConfig {
                                                                                 .scheme("bearer")
                                                                                 .bearerFormat("JWT")))
                                 .servers(List.of(
+                                                new Server().url("https://final-quiz-server.onrender.com/identity")
+                                                                .description("Production Server"),
                                                 new Server().url("http://localhost:8080/identity")
                                                                 .description("Local Development Server"),
                                                 new Server().url("https://quiz-server-production-eddc.up.railway.app")
-                                                                .description("Production Server"),
-                                                new Server().url("https://quiz-server-cz64.onrender.com")
                                                                 .description("Production Server")));
+
         }
 }
